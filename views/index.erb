@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+  <%= erb :header %>
+
+  <body>
+
+      <!-- code récupéré sur bootstrap pour la barre de navigation puis adapté -->
+      <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
+        <!-- les classes ci-dessus sont des classes bootstrap sauf la dernière qui nous permet
+        via le CSS de modifier le comportement par défaut de bootstrap -->
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index">The Boulangerie</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+
+             <!-- Code nécessaire pour analyse GA du bouton commander de la navbar
+                  Avant mise en place de GA on avait <li><a href="#">Commander</a></li> 
+              <li><a href="#" onclick="ga('send', 'event', 'navbar', 'commander', 'label');">Commander</a></li>
+             Fin code pour GA --> 
+
+              <li><a href="contact">Contact</a></li>
+
+              <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Suivez nous <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+                  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+      <!-- fin du code récupéré sur bootstrap pour la barre de navigation -->
+     
+      <div id="wrapper">
+        <h1>De bons pains, pâtisseries et autres ...</h1>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#orderform">
+          Commander
+        </button>
+
+      </div> 
+
+
+      <!-- on prend la structure d'une modal dans bootstrap qu'on va adapter pour y insérer le formulaire -->
+      <!-- Modal -->
+      <div class="modal fade" id="orderform" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Commandez</h4>
+            </div> 
+            <div class="modal-body">
+
+            	<form method="POST" action="/index">
+		 			<p>Prénom:</p><input name="prenom">
+					<p>Nom:</p><input name="nom">			
+					<p>N° de téléphone:</p><input name="notel">	
+					<input type="submit" value="Soumettre">
+				</form>	
+
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- fin du code bootstrap pour le code du modal dans lequel on a inséré le formulaire -->
+
+      <div class="spacer"></div> <!-- permet de mettre de l'espace au dessus des fonctions -->
+
+        <div class="container text-center"> <!-- container bootstrap, on utilise également la classe 
+        bootstrap text-center qui permet de tout centrer dans le container -->
+          <div class="row">     <!-- row bootstrap -->
+
+            <div class="col-sm-6 col-md-3 feature circle">
+              <img src="images/noun_706535_cc.png" alt="Pains traditionnels et baguettes" title="Pains traditionnels et baguettes" width="100" class="circle">
+              <p>Pains traditionnels et baguettes</p>
+            </div>
+
+            <div class="col-sm-6 col-md-3 feature circle">
+              <img src="images/noun_557_cc.png" alt="Pâtisseries sur commande" title="Pâtisseries sur commande" width="100" class="circle">
+              <p>Pâtisseries sur commande</p>
+            </div>
+            
+            <div class="col-sm-6 col-md-3 feature circle">    
+              <img src="images/noun_773502_cc.png" alt="Livraison possible de vos commandes" title="Livraison possible de vos commandes" width="100" class="circle">
+              <p>Livraison possible de vos commandes <strong>à domicile</strong></p>
+            </div>
+            
+            <div class="col-sm-6 col-md-3 feature circle">    
+              <img src="images/noun_713559_cc.png" alt="Paiement par CB possible" title="Paiement par CB possible" width="100" class="circle">
+              <p>Pas de monnaie ? Pas de problème - paiement <strong>possible </strong> avec votre CB</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="spacer"></div> <!-- permet de mettre de l'espace sous les fonctions -->
+
+
+        <div class="container">
+          <div class="row">
+
+          <div class="col-xs-12 text-center">
+            <h2>Inscrivez-vous à la newsletter</h2>
+
+             	<form method="POST" action="/newsletter">
+		 			<p>Adresse email:</p><input name="email">
+					<input type="submit" value="Suivez nous">
+				</form>	
+
+              </div>
+
+          </div>
+
+          </div>  
+        </div>
+
+
+        <div class="spacer"></div>
+
+        <%= erb :footer %>
+   
+  </body>
+</html>

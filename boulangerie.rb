@@ -1,5 +1,10 @@
 require 'sinatra'
 
+# Ajout pour gestion BDD
+require 'sinatra/activerecord'
+require './config/environments' #database configuration
+require './models/model'
+
 get '/' do
 	erb :index
 end
@@ -18,17 +23,18 @@ get '/test' do
 end
 
 post '/index' do
-	prenom = params[:prenom]
-	nom = params[:nom]
-	notel = params[:notel]
-# ici je peux stocker les informations récupérées dans le formulaire en BDD
 
-	erb :index
+	@model = Model.new(params[:model])
+
+	if @model.save
+		redirect '/index'
+	else 
+		"There is an error !"	
+	end	
 end
 
 post '/newsletter' do
 	email = params[:email]
-# ici je peux stocker les informations récupérées dans le formulaire en BDD
 
 	erb :index
 end

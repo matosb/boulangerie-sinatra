@@ -1,4 +1,7 @@
 # Gemfile
 source 'https://rubygems.org'
 gem 'sinatra'
-ruby '2.3.3'
+# Ajout pour gestion BDD
+gem "activerecord"
+gem "sinatra-activerecord"
+gem "pg"

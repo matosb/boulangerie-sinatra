@@ -44,16 +44,19 @@
         </div><!-- /.container-fluid -->
       </nav>
       <!-- fin du code récupéré sur bootstrap pour la barre de navigation -->
-     
+
       <div id="wrapper">
+
         <h1>De bons pains, pâtisseries et autres ...</h1>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#orderform">
           Commander
         </button>
+        <div id='flash' class='success'>
+          <h2><%= flash[:success] %></h2> 
+        </div>
 
       </div> 
-
 
       <!-- on prend la structure d'une modal dans bootstrap qu'on va adapter pour y insérer le formulaire -->
       <!-- Modal -->

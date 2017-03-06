@@ -4,6 +4,8 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require './config/environments' #database configuration
 require './models/model'
+require 'sinatra/flash'
+enable :sessions
 
 get '/' do
 	erb :index
@@ -27,6 +29,7 @@ post '/index' do
 	@model = Model.new(params[:model])
 
 	if @model.save
+		flash[:success] = 'Votre commande est bien enregistrée'
 		redirect '/index'
 	else 
 		"There is an error !"	

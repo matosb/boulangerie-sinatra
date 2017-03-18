@@ -140,6 +140,36 @@
 
         <div class="spacer"></div>
 
+        <!-- Code GA de transaction e-commerce - à positionner sur une page de remerciements par exemple
+        lorsqu'on la transaction est terminée et qu'on a toutes les infos - ici ce code va s'exécuter dès qu'on sera sur la page - c'est un exemple -->
+
+         <script type="text/javascript">
+           
+            ga('require', 'ecommerce', 'ecommerce.js');
+
+            ga('ecommerce:addTransaction', {
+              'id': '1234',                     // Transaction ID (req)
+              'affiliation': 'Breadme',         // Affiliation (opt)
+              'revenue': '15.00',               // Grand Total
+              'shipping': '2',                  // Shipping
+              'tax': '0.99'                     // Tax
+            });
+
+            ga('ecommerce:addItem', {
+              'id': '1234',                     // Transaction ID (req)
+              'name': 'Eclair chocolat',        // Product name (req)
+              'sku': 'DD23444',                 // SKU/code
+              'category': 'Patisserie',         // Category
+              'price': '15.00',                 // Unit price
+              'quantity': '1'                   // Quantity
+            });
+
+            ga('ecommerce:send');
+ 
+         </script> 
+
+         <!-- fin code GA -->
+
         <%= erb :footer %>
    
   </body>
